@@ -1,7 +1,7 @@
 import React from "react";
 import Row from "../layout/row";
 import bg from "../img/home_jumbotron.png";
-
+import "font-awesome/css/font-awesome.min.css";
 const HomePage = () => {
   return (
     <div>
@@ -10,13 +10,15 @@ const HomePage = () => {
           <img src={bg} alt="logo" height="700px" width="700px" />
         </div>
         <div className="right-jumbotron">
-          <h1 className="logo">Read</h1>
-          <p className="logo">In Order To</p>
-          <h1 className="logo">Live</h1>
-          <hr></hr>
+          <hr width="60%"></hr>
           <h2 className="logo">O - Book </h2>
           <hr></hr>
-          <h1 className="logo">Platform to Download Books</h1>
+          <i
+            className="fa fa-book fa-5x"
+            style={{ color: "dimgray", verticalAlign: "middle" }}
+          ></i>
+          <hr width="60%"></hr>
+          <h2 className="logo">Reading Book Platform</h2>
         </div>
       </div>
       <Row />
