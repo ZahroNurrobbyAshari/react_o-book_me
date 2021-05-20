@@ -14,8 +14,6 @@ const Nav=()=>{
             <li><a ><Button btn="Home" /></a></li>
             <li><a><Button btn="About" /></a></li>
             <li><a><Button btn="Contact" /></a></li>
-            <li><a><Button btn="Login" /></a></li>
-            <li><a><Button btn="Register" /></a></li>
           </ul>
       </div>
     );
