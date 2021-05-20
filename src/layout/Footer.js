@@ -6,10 +6,10 @@ const Footer = () => {
     <div>
       <footer className="footer logo">
         <div className="frame">
-          <a href="#" className="btn-footer">
+          <a href="www.facebook.com" className="btn-footer">
             <i className="fa fa-facebook-f" style={{ color: "#3b5998" }}></i>
           </a>
-          <a href="#" className="btn-footer">
+          <a href="www.twitter.com" className="btn-footer">
             <i className="fa fa-twitter" style={{ color: "#00acee" }}></i>
           </a>
           <a
@@ -21,7 +21,7 @@ const Footer = () => {
           <a href="https://www.instagram.com/robbyash/" className="btn-footer">
             <i className="fa fa-instagram" style={{ color: "#0e76a8" }}></i>
           </a>
-          <a href="#" className="btn-footer">
+          <a href="web.whatsapp.com" className="btn-footer">
             <i className="fa fa-whatsapp" style={{ color: "#47D15E" }}></i>
           </a>
           <a

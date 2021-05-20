@@ -3,8 +3,6 @@ import axios from "axios";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 
-import Button from "../components/button";
-
 const Row = (props) => {
   const [books, setBooks] = useState([]);
   let button = false;
@@ -50,6 +48,7 @@ const Row = (props) => {
               <div className="img-wrapper">
                 <img
                   className="thumbnail"
+                  alt="mskamska"
                   src={book.volumeInfo.imageLinks.thumbnail}
                   onClick={(e) => toggleButton(i, e)}
                 />
