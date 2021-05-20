@@ -1,50 +1,68 @@
-import React, { Component ,useState,useEffect} from 'react'
-import axios from 'axios'; 
-import Slider from "react-slick"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
+import React, { Component, useState, useEffect } from "react";
+import axios from "axios";
+import "@splidejs/splide/dist/css/themes/splide-default.min.css";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 
+import Button from "../components/button";
 
-const Row=(props)=>{
+const Row = (props) => {
+  const [books, setBooks] = useState([]);
+  let button = false;
 
-    const [books,setBooks]=useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      const request = await axios.get(
+        "https://www.googleapis.com/books/v1/volumes?q=duck&filter=free-ebooks"
+      );
+      console.log(request.data);
+      setBooks(request.data.items);
 
-    useEffect(() => {
-        async function fetchData(){
-            const request = await axios.get("https://www.googleapis.com/books/v1/volumes?q=duck&filter=free-ebooks");
-            setBooks(request.data.items)
-            
-            return request;
-        }
-        fetchData();
-    }, []);
+      return request;
+    }
+    fetchData();
+  }, []);
 
-    console.log(books);
+  const toggleButton = (i) => {
+    let el = document.getElementById(i);
+    if (button === false) {
+      el.classList.add("display");
+      button = i;
+    } else {
+      el.classList.remove("display");
+      button = false;
+    }
+  };
 
-    return(
-       
-        
-             
-            <div className="row" id="slider">
-                <h1 className="logo">All Books</h1>
-                <ul id="autoWidth" className="cs-hidden">
-                    <li className="item-a">
-                        <div className="row-box">
-                            <div className="row-b-image">
-                            {books.map(book=> 
-                                (<img src={book.volumeInfo.imageLinks.thumbnail} height="650" width="425"></img>)
-                            )}
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+  console.log(books);
 
+  return (
+    <div className="row" id="slider">
+      <h1 className="logo">All Books</h1>
+      <div className="row-box">
+        <Splide
+          options={{
+            rewind: true,
+            perPage: 4,
+          }}
+        >
+          {books.map((book, i) => (
+            <SplideSlide>
+              <div className="img-wrapper">
+                <img
+                  className="thumbnail"
+                  src={book.volumeInfo.imageLinks.thumbnail}
+                  onClick={(e) => toggleButton(i, e)}
+                />
+                <div id={i} className="button-on-hover">
+                  <a href={book.accessInfo.webReaderLink}>Read More</a>
+                </div>
+              </div>
+            </SplideSlide>
+          ))}
+        </Splide>
+      </div>
+    </div>
+  );
+};
 
-            </div>
-        
-        
-    )
-}
-
-export default Row
-
+export default Row;
